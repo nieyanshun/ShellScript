@@ -436,7 +436,6 @@ EOF
 
 log "start to select album info from hive which will be import to mysql"
 
-#缓存专辑对应的会员数量，避免多次查询
 declare -A pidUserCountCache=()
 
 pidUserCountInfo=`hive -S -e " select count(distinct uid) count,t1.pid from temp.$T_FLOW_INFO t1  where dt=$dateValue and mem_type!='none' group by t1.pid;"`
